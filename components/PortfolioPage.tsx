@@ -398,16 +398,16 @@ export function PortfolioPage() {
           </p>
           <div className="drive-links-grid">
             <a
-              href="https://drive.google.com/drive/folders/1QCCXhYOoMJjDzc8rQxyLmedZIFtaMbeu"
+              href="https://drive.google.com/drive/folders/1w7ZDwUXETeeuIOItM-4Ohc02K08rqpBa"
               className="drive-link-card"
               target="_blank"
               rel="noopener noreferrer"
-              title="Open Trad (couple) folder in Google Drive"
+              title="Open Olufemi & Aderonke folder in Google Drive"
             >
-              <div className="drive-link-icon">💍</div>
-              <div className="drive-link-title">Trad (couple)</div>
+              <div className="drive-link-icon">💑</div>
+              <div className="drive-link-title">Olufemi &amp; Aderonke</div>
               <div className="drive-link-url">
-                <em>drive.google.com</em>/folders/1QCCXhYOoMJjDzc8rQxyLmedZIFtaMbeu
+                <em>drive.google.com</em>/folders/1w7ZDwUXETeeuIOItM-4Ohc02K08rqpBa
               </div>
             </a>
             <a
@@ -424,16 +424,16 @@ export function PortfolioPage() {
               </div>
             </a>
             <a
-              href="https://drive.google.com/drive/folders/1roqoUT80PKforTW7Lt5CeK71dRx5Rr0x"
+              href="https://drive.google.com/drive/folders/1QCCXhYOoMJjDzc8rQxyLmedZIFtaMbeu"
               className="drive-link-card"
               target="_blank"
               rel="noopener noreferrer"
-              title="Open NiLa2025 folder in Google Drive"
+              title="Open Trad (couple) folder in Google Drive"
             >
-              <div className="drive-link-icon">🎊</div>
-              <div className="drive-link-title">NiLa 2025</div>
+              <div className="drive-link-icon">💍</div>
+              <div className="drive-link-title">Trad (couple)</div>
               <div className="drive-link-url">
-                <em>drive.google.com</em>/folders/1roqoUT80PKforTW7Lt5CeK71dRx5Rr0x
+                <em>drive.google.com</em>/folders/1QCCXhYOoMJjDzc8rQxyLmedZIFtaMbeu
               </div>
             </a>
           </div>
