@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { CoverWebGL } from "./CoverWebGL";
 import { CustomCursor } from "./CustomCursor";
 import { Reveal } from "./Reveal";
+import { Center } from "@chakra-ui/react";
 
 const TAB_LABELS = [
   "All Work",
@@ -56,8 +58,8 @@ export function PortfolioPage() {
           </div>
           <p className="cover-tagline">
             <strong>Creating scroll-stopping content</strong> that converts —
-            through intentional storytelling, mobile-first visuals &amp; strategic
-            social media.
+            through intentional storytelling, mobile-first visuals &amp;
+            strategic social media.
           </p>
           <div className="cover-roles">
             <div className="cover-role">Content Creator</div>
@@ -95,9 +97,21 @@ export function PortfolioPage() {
               The Frame
             </em>
           </div>
-          <div className="about-image-block">
-            <span>Photo / Headshot</span>
-          </div>
+          <Center
+            className="about-image-block"
+            position="relative"
+            boxSize={"240px"}
+            // display="none"
+          >
+            <Image
+              src="/images/adela_headshot.jpeg"
+              alt="Mercy Elliot (Dela) — headshot"
+              fill
+              objectFit="cover"
+              objectPosition="center top"
+              priority
+            />
+          </Center>
         </Reveal>
         <Reveal className="about-right">
           <p className="about-intro">
@@ -107,17 +121,17 @@ export function PortfolioPage() {
           </p>
           <p className="about-body">
             With over 5 years of experience in social media management and
-            content creation, I&apos;ve partnered with more than 10 brands across
-            fashion, consulting, tech, and events — helping them grow their
-            online presence, deepen audience engagement, and tell stories that
-            actually land.
+            content creation, I&apos;ve partnered with more than 10 brands
+            across fashion, consulting, tech, and events — helping them grow
+            their online presence, deepen audience engagement, and tell stories
+            that actually land.
             <br />
             <br />
             In 2025, I took a bold step and founded{" "}
             <strong>Dela The Creator</strong> — a mobile videography brand
-            dedicated to delivering high-quality, intentional visuals using just a
-            smartphone. From weddings and proposals to brand promotions and live
-            events, every frame is crafted with purpose.
+            dedicated to delivering high-quality, intentional visuals using just
+            a smartphone. From weddings and proposals to brand promotions and
+            live events, every frame is crafted with purpose.
             <br />
             <br />
             My philosophy is simple: great content isn&apos;t about expensive
@@ -197,7 +211,9 @@ export function PortfolioPage() {
           <div className="service-card">
             <div className="service-num">04</div>
             <div className="service-icon">⚡</div>
-            <div className="service-title">Short-Form Video (Reels / TikTok)</div>
+            <div className="service-title">
+              Short-Form Video (Reels / TikTok)
+            </div>
             <p className="service-desc">
               Punchy, trend-aware short-form videos built for virality. From
               concept to final cut, optimized for algorithm performance on each
@@ -209,9 +225,9 @@ export function PortfolioPage() {
             <div className="service-icon">🎬</div>
             <div className="service-title">Video Editing & Post-Production</div>
             <p className="service-desc">
-              Clean, cinematic edits using CapCut, VN, and InShot. Color grading,
-              captioning, sound design — everything your raw footage needs to
-              shine.
+              Clean, cinematic edits using CapCut, VN, and InShot. Color
+              grading, captioning, sound design — everything your raw footage
+              needs to shine.
             </p>
           </div>
           <div className="service-card">
@@ -219,8 +235,9 @@ export function PortfolioPage() {
             <div className="service-icon">🗺️</div>
             <div className="service-title">Content Strategy</div>
             <p className="service-desc">
-              Data-informed content roadmaps, audience profiling, platform-specific
-              planning, and content calendars designed to drive measurable growth.
+              Data-informed content roadmaps, audience profiling,
+              platform-specific planning, and content calendars designed to
+              drive measurable growth.
             </p>
           </div>
         </Reveal>
