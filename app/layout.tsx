@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   title: "Mercy Elliot (Dela) — Content Creator & Mobile Videographer",
   description:
     "Portfolio — content creation, mobile videography, and social media management. Lagos, Nigeria.",
+  icons: {
+    icon: "/images/adela_logo_2.PNG",
+    apple: "/images/adela_logo_2.PNG",
+  },
 };
 
 export default function RootLayout({

@@ -5,57 +5,74 @@ import { useState } from "react";
 import { CoverWebGL } from "./CoverWebGL";
 import { CustomCursor } from "./CustomCursor";
 import { DrivePreviewModal } from "./DrivePreviewModal";
-import { PortfolioDriveBento } from "./PortfolioDriveBento";
+import {
+  PortfolioDriveBento,
+  type DriveBentoTile,
+  type LocalVideoBentoTile,
+  type PortfolioBentoTile,
+} from "./PortfolioDriveBento";
+import { ReelViewerOverlay, type ReelViewerPayload } from "./ReelViewerOverlay";
 import { Reveal } from "./Reveal";
 import { Center } from "@chakra-ui/react";
 import { DRIVE_PORTFOLIO_CLIPS } from "@/lib/drivePortfolio";
 import type { DriveClip } from "@/lib/drivePortfolio";
+import { videoPublicSrc } from "@/lib/publicVideos";
 
-const BENTO_DRIVE_TILES: {
-  layoutClass: string;
-  clip: DriveClip;
-  label: string;
-}[] = [
+const WEDDING_REEL_FILENAME =
+  "🥺🥺🥺 Saying I Do 💃💃💃💃Bride @sparkielensGroom @emmanuel_akanbi Rings @dtrinket___ Event Pla.mp4";
+
+const BENTO_DRIVE_TILES: DriveBentoTile[] = [
   {
     layoutClass: "bento-feature",
     clip: DRIVE_PORTFOLIO_CLIPS[0],
-    label: "Bridal · Video",
+    label: "Baby shower · Video",
+  },
+];
+
+const BENTO_LOCAL_VIDEO_TILES: LocalVideoBentoTile[] = [
+  {
+    layoutClass: "bento-reel-hero",
+    videoSrc: videoPublicSrc(WEDDING_REEL_FILENAME),
+    label: "Wedding · Reel",
+    title: "Saying I Do — Sparkie Lens",
   },
   {
-    layoutClass: "bento-tile-a",
-    clip: DRIVE_PORTFOLIO_CLIPS[1],
-    label: "Bridal · Video",
+    layoutClass: "bento-reel-mid-a",
+    videoSrc: videoPublicSrc(
+      "realmofgloryipaja_1777397997_3885410243039791301_6916197748.mp4",
+    ),
+    label: "Event · Reel",
+    title: "Realm of Glory Ipaja",
   },
   {
-    layoutClass: "bento-tile-b",
-    clip: DRIVE_PORTFOLIO_CLIPS[2],
-    label: "Bridal · Video",
+    layoutClass: "bento-reel-mid-b",
+    videoSrc: videoPublicSrc(
+      "brandxsourcing_1775553350_3869943942360116393_73372328276.mp4",
+    ),
+    label: "Brand · Reel",
+    title: "BrandX Sourcing",
   },
   {
-    layoutClass: "bento-banner",
-    clip: DRIVE_PORTFOLIO_CLIPS[10],
-    label: "Wedding · Video",
+    layoutClass: "bento-reel-mid-c",
+    videoSrc: videoPublicSrc(
+      "brandxsourcing_1769509209_3819239649206644234_73372328276.mp4",
+    ),
+    label: "Brand · Reel",
+    title: "BrandX Sourcing",
   },
   {
-    layoutClass: "bento-span-left",
-    clip: DRIVE_PORTFOLIO_CLIPS[14],
-    label: "Wedding · Video",
+    layoutClass: "bento-reel-mid-d",
+    videoSrc: videoPublicSrc(
+      "brandxsourcing_1776521627_3878066726210640577_73372328276.mp4",
+    ),
+    label: "Brand · Reel",
+    title: "BrandX Sourcing",
   },
-  {
-    layoutClass: "bento-span-mid",
-    clip: DRIVE_PORTFOLIO_CLIPS[11],
-    label: "Wedding · Video",
-  },
-  {
-    layoutClass: "bento-tile-c",
-    clip: DRIVE_PORTFOLIO_CLIPS[12],
-    label: "Wedding · Video",
-  },
-  {
-    layoutClass: "bento-tile-d",
-    clip: DRIVE_PORTFOLIO_CLIPS[15],
-    label: "Events · Video",
-  },
+];
+
+const BENTO_TILES: PortfolioBentoTile[] = [
+  ...BENTO_DRIVE_TILES,
+  ...BENTO_LOCAL_VIDEO_TILES,
 ];
 
 /* Temporarily hidden — portfolio category tabs
@@ -102,6 +119,7 @@ export function PortfolioPage() {
     id: string;
     title: string;
   } | null>(null);
+  const [reelViewer, setReelViewer] = useState<ReelViewerPayload | null>(null);
 
   const openDrivePreview = (clip: DriveClip) => {
     setDrivePreview({ id: clip.id, title: clip.title });
@@ -166,8 +184,8 @@ export function PortfolioPage() {
             <CoverWebGL />
             <div className="cover-portrait">
               <Image
-                src="/images/adela_headshot.jpeg"
-                alt="Mercy Elliot (Dela) — portrait"
+                src="/images/adela_logo_2.PNG"
+                alt="Mercy Elliot (Dela) — logo"
                 fill
                 sizes="50vw"
                 priority
@@ -200,7 +218,7 @@ export function PortfolioPage() {
             // display="none"
           >
             <Image
-              src="/images/adela_headshot.jpeg"
+              src="/images/adela_headshot_2.jpeg"
               alt="Mercy Elliot (Dela) — headshot"
               fill
               objectFit="cover"
@@ -366,8 +384,9 @@ export function PortfolioPage() {
         */}
         <Reveal>
           <PortfolioDriveBento
-            tiles={BENTO_DRIVE_TILES}
+            tiles={BENTO_TILES}
             onSelect={openDrivePreview}
+            onReelOpen={setReelViewer}
           />
         </Reveal>
         <DrivePreviewModal
@@ -411,16 +430,16 @@ export function PortfolioPage() {
               </div>
             </a>
             <a
-              href="https://drive.google.com/drive/folders/12pxJDjeOZ02uEyzf39S_LSS1nVcY9mBC"
+              href="https://drive.google.com/drive/folders/1KmrgSVDuP-o0Wf7t9FolQR1iU3IlcHHt"
               className="drive-link-card"
               target="_blank"
               rel="noopener noreferrer"
-              title="Open Dela the creator folder in Google Drive"
+              title="Open Tife’s First Birthday folder in Google Drive"
             >
-              <div className="drive-link-icon">🎥</div>
-              <div className="drive-link-title">Dela The Creator</div>
+              <div className="drive-link-icon">🎂</div>
+              <div className="drive-link-title">Tife&apos;s First Birthday</div>
               <div className="drive-link-url">
-                <em>drive.google.com</em>/folders/12pxJDjeOZ02uEyzf39S_LSS1nVcY9mBC
+                <em>drive.google.com</em>/folders/1KmrgSVDuP-o0Wf7t9FolQR1iU3IlcHHt
               </div>
             </a>
             <a
@@ -601,6 +620,11 @@ export function PortfolioPage() {
           © 2025 Mercy Elliot (Dela). All rights reserved.
         </div>
       </footer>
+
+      <ReelViewerOverlay
+        state={reelViewer}
+        onClose={() => setReelViewer(null)}
+      />
     </div>
   );
 }
