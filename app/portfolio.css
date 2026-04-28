@@ -3,8 +3,8 @@
 :root {
   --black: #0a0a0a;
   --white: #f5f0eb;
-  --red: #e8003d;
-  --red-dim: #b0002e;
+  --red: #e9e2d8;
+  --red-dim: #cfc8bf;
   --cream: #ede8e1;
   --gray: #6b6560;
   --light-gray: #c8c2bb;
@@ -33,7 +33,7 @@
 .portfolio-root .cursor-ring {
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(232, 0, 61, 0.5);
+  border: 1px solid rgba(233, 226, 216, 0.5);
   border-radius: 50%;
   position: fixed;
   top: 0;
@@ -237,7 +237,7 @@
   min-height: 100vh;
   position: relative;
   z-index: 1;
-  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 60%, #1a0008 100%);
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 60%, #1b1a18 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -252,7 +252,7 @@
 .portfolio-root .cover-photo-placeholder .photo-icon {
   width: 64px;
   height: 64px;
-  border: 1px solid rgba(232, 0, 61, 0.3);
+  border: 1px solid rgba(233, 226, 216, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -421,7 +421,7 @@
 }
 
 .portfolio-root .stat-num span {
-  color: var(--red);
+  color: var(--black);
 }
 
 .portfolio-root .stat-label {
@@ -542,7 +542,7 @@
 .portfolio-root .tab-btn.active,
 .portfolio-root .tab-btn:hover {
   background: var(--red);
-  color: var(--white);
+  color: var(--black);
 }
 
 .portfolio-root .portfolio-grid {
@@ -582,7 +582,7 @@
 }
 
 .portfolio-root .portfolio-placeholder:hover {
-  background: linear-gradient(135deg, #1e0008 0%, #0f0f0f 100%);
+  background: linear-gradient(135deg, #1e1d1b 0%, #0f0f0f 100%);
 }
 
 .portfolio-root .portfolio-placeholder .pi {
@@ -610,7 +610,7 @@
 }
 
 .portfolio-root .drive-inner {
-  border: 1px solid rgba(232, 0, 61, 0.3);
+  border: 1px solid rgba(233, 226, 216, 0.3);
   padding: 70px 60px;
   position: relative;
   max-width: 900px;
@@ -682,8 +682,8 @@
 }
 
 .portfolio-root .drive-link-card:hover {
-  border-color: rgba(232, 0, 61, 0.4);
-  background: #130007;
+  border-color: rgba(233, 226, 216, 0.4);
+  background: #161514;
 }
 
 .portfolio-root .drive-link-card:hover::after {
@@ -775,10 +775,6 @@
 .portfolio-root .brand-box:hover {
   background: var(--black);
   color: var(--white);
-}
-
-.portfolio-root .brand-box .brand-icon {
-  font-size: 1.5rem;
 }
 
 .portfolio-root .brand-name {
@@ -886,20 +882,20 @@
 }
 
 .portfolio-root .contact-left .section-label {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(10, 10, 10, 0.45);
 }
 
 .portfolio-root .contact-heading {
   font-family: var(--font-bebas), "Bebas Neue", sans-serif;
   font-size: clamp(4rem, 6vw, 7rem);
   line-height: 0.9;
-  color: var(--white);
+  color: var(--black);
   margin-bottom: 28px;
 }
 
 .portfolio-root .contact-sub {
   font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(10, 10, 10, 0.65);
   line-height: 1.65;
 }
 
@@ -914,19 +910,19 @@
   align-items: center;
   gap: 20px;
   padding: 22px 28px;
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(10, 10, 10, 0.06);
   text-decoration: none;
   transition: background 0.2s;
 }
 
 .portfolio-root .contact-item:hover {
-  background: rgba(0, 0, 0, 0.22);
+  background: rgba(10, 10, 10, 0.1);
 }
 
 .portfolio-root .contact-item-icon {
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(10, 10, 10, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -938,13 +934,13 @@
   font-size: 0.6rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(10, 10, 10, 0.45);
   margin-bottom: 3px;
 }
 
 .portfolio-root .contact-item-value {
   font-size: 0.95rem;
-  color: var(--white);
+  color: var(--black);
   font-weight: 500;
 }
 
@@ -987,7 +983,15 @@
 }
 
 .portfolio-root .portfolio-section-label {
-  color: var(--red);
+  color: var(--black);
+}
+
+.portfolio-root #about .section-label {
+  color: var(--black);
+}
+
+.portfolio-root #about .section-heading em {
+  color: var(--gray);
 }
 
 .portfolio-root .drive-heading-center {

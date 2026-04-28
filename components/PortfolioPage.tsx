@@ -15,6 +15,34 @@ const TAB_LABELS = [
   "Product Shoots",
 ] as const;
 
+const BRAND_CLIENTS = [
+  {
+    image: "/images/brands/that-purple-dot-couture.jpeg",
+    name: "ThatPurpleDot Couture",
+    category: "Fashion",
+  },
+  {
+    image: "/images/brands/ilu-oba-international.jpeg",
+    name: "Ìlú-Obà International",
+    category: "Real Estate",
+  },
+  {
+    image: "/images/brands/da-consulting.jpeg",
+    name: "DA Consulting",
+    category: "Consulting",
+  },
+  {
+    image: "/images/brands/tecga.jpeg",
+    name: "TECGA",
+    category: "Tech / Gaming",
+  },
+  {
+    image: "/images/brands/brandx-sourcing.jpeg",
+    name: "BrandX Sourcing",
+    category: "Logistics",
+  },
+] as const;
+
 export function PortfolioPage() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -398,31 +426,28 @@ export function PortfolioPage() {
           </div>
         </Reveal>
         <Reveal className="brands-grid">
-          <div className="brand-box">
-            <div className="brand-icon">💜</div>
-            <div className="brand-name">ThatPurpleDot Couture</div>
-            <div>Fashion</div>
-          </div>
-          <div className="brand-box">
-            <div className="brand-icon">🏗️</div>
-            <div className="brand-name">Ìlú-Obà International</div>
-            <div>Real Estate</div>
-          </div>
-          <div className="brand-box">
-            <div className="brand-icon">📊</div>
-            <div className="brand-name">DA Consulting</div>
-            <div>Consulting</div>
-          </div>
-          <div className="brand-box">
-            <div className="brand-icon">🎮</div>
-            <div className="brand-name">TECGA</div>
-            <div>Tech / Gaming</div>
-          </div>
-          <div className="brand-box">
-            <div className="brand-icon">📦</div>
-            <div className="brand-name">BrandX Sourcing</div>
-            <div>Logistics</div>
-          </div>
+          {BRAND_CLIENTS.map((brand) => (
+            <div key={brand.image} className="brand-box">
+              <Center
+                position="relative"
+                boxSize="70px"
+                borderRadius="full"
+                overflow="hidden"
+                flexShrink={0}
+              >
+                <Image
+                  src={brand.image}
+                  alt={`${brand.name} logo`}
+                  fill
+                  sizes="70px"
+                  quality={90}
+                  style={{ objectFit: "cover" }}
+                />
+              </Center>
+              <div className="brand-name">{brand.name}</div>
+              <div>{brand.category}</div>
+            </div>
+          ))}
         </Reveal>
       </section>
 

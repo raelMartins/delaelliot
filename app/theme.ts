@@ -23,8 +23,8 @@ const delaTheme = defineConfig({
         dela: {
           black: { value: "#0a0a0a" },
           white: { value: "#f5f0eb" },
-          red: { value: "#e8003d" },
-          redDim: { value: "#b0002e" },
+          red: { value: "#E9E2D8" },
+          redDim: { value: "#cfc8bf" },
           cream: { value: "#ede8e1" },
           gray: { value: "#6b6560" },
           lightGray: { value: "#c8c2bb" },
