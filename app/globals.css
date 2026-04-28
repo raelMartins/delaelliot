@@ -1,0 +1,36 @@
+/* Global resets handled by Chakra theme + portfolio.css */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  nav,
+  .cursor,
+  .cursor-ring {
+    display: none !important;
+  }
+
+  section {
+    break-inside: avoid;
+  }
+
+  body {
+    cursor: auto !important;
+  }
+}
+

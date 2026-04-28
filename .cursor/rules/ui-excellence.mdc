@@ -1,0 +1,31 @@
+---
+description: UI excellence, motion, and UX standards for this portfolio project
+alwaysApply: true
+---
+
+# UI excellence
+
+This project is a polished portfolio experience. Treat visual quality, motion, and usability as first-class requirements on every change.
+
+## Visual design
+
+- Preserve a cohesive look: typography hierarchy, spacing rhythm, and the established palette (deep black/cream, accent red, editorial type pairing).
+- Avoid generic or default-looking UI; align new components with existing patterns in `app/portfolio.css` and Chakra theme tokens in `app/theme.ts`.
+- Respect contrast, tap targets, and readable line lengths on all breakpoints.
+
+## Motion
+
+- Prefer intentional animation (Framer Motion, CSS where appropriate): subtle entrances, hover feedback, and scroll-driven reveals. Avoid gratuitous or long-running motion.
+- Honor `prefers-reduced-motion`: provide reduced or non-animated alternatives when adding motion.
+- Keep custom cursor and WebGL layers performant; do not block interaction or hurt Lighthouse without good reason.
+
+## UX
+
+- Navigation, focus states, and keyboard use must remain clear and accessible.
+- External links open safely (`rel="noopener noreferrer"` where applicable). Hash links and contact actions should behave predictably.
+- Loading states and async content should degrade gracefully (skeletons, placeholders, or clear copy).
+
+## When changing or extending the UI
+
+- Match or exceed the current level of finish; do not ship rough placeholders in user-facing flows.
+- New sections should feel like they belong in the same design system as the converted portfolio.

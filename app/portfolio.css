@@ -1,0 +1,1069 @@
+/* Portfolio layout — ported from dela_portfolio.html; fonts use next/font CSS variables */
+
+:root {
+  --black: #0a0a0a;
+  --white: #f5f0eb;
+  --red: #e8003d;
+  --red-dim: #b0002e;
+  --cream: #ede8e1;
+  --gray: #6b6560;
+  --light-gray: #c8c2bb;
+}
+
+.portfolio-root * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.portfolio-root .cursor {
+  width: 12px;
+  height: 12px;
+  background: var(--red);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.portfolio-root .cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(232, 0, 61, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  will-change: transform;
+}
+
+.portfolio-root nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 60px;
+  backdrop-filter: blur(16px);
+  background: rgba(10, 10, 10, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.portfolio-root .nav-logo {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  color: var(--white);
+}
+
+.portfolio-root .nav-logo span {
+  color: var(--red);
+}
+
+.portfolio-root .nav-links {
+  display: flex;
+  gap: 38px;
+  list-style: none;
+}
+
+.portfolio-root .nav-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--light-gray);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.portfolio-root .nav-links a:hover {
+  color: var(--red);
+}
+
+.portfolio-root section {
+  position: relative;
+}
+
+.portfolio-root #cover {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.portfolio-root .cover-left {
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 60px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-root .cover-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.portfolio-root .cover-name {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: clamp(5rem, 8vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  opacity: 0;
+  animation: fadeUp 0.9s 0.4s forwards;
+}
+
+.portfolio-root .cover-name em {
+  font-family: var(--font-playfair), "Playfair Display", serif;
+  font-style: italic;
+  color: var(--red);
+  font-size: 0.55em;
+  display: block;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-root .cover-tagline {
+  margin-top: 36px;
+  font-size: 1.05rem;
+  color: var(--light-gray);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 360px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.6s forwards;
+}
+
+.portfolio-root .cover-tagline strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.portfolio-root .cover-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 44px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.8s forwards;
+}
+
+.portfolio-root .cover-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.portfolio-root .cover-role::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+.portfolio-root .cover-right {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-root .cover-right::before {
+  content: "DELA";
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 30vw;
+  color: rgba(255, 255, 255, 0.02);
+  position: absolute;
+  bottom: -2vw;
+  right: -2vw;
+  line-height: 1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.portfolio-root .cover-photo-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-root .cover-webgl-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.portfolio-root .cover-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 60%, #1a0008 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.portfolio-root .cover-photo-placeholder .photo-icon {
+  width: 64px;
+  height: 64px;
+  border: 1px solid rgba(232, 0, 61, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--red);
+}
+
+.portfolio-root .red-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--red);
+  z-index: 3;
+}
+
+.portfolio-root .cover-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gray);
+  opacity: 0;
+  animation: fadeUp 1s 1.2s forwards;
+}
+
+.portfolio-root .scroll-line {
+  width: 40px;
+  height: 1px;
+  background: var(--red);
+  animation: scrollPulse 2s infinite;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.5);
+    transform-origin: left;
+  }
+}
+
+.portfolio-root #about {
+  background: var(--white);
+  color: var(--black);
+  padding: 120px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.portfolio-root .about-left {
+  position: sticky;
+  top: 120px;
+}
+
+.portfolio-root .section-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+
+.portfolio-root .section-heading {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: clamp(3.5rem, 5vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--black);
+}
+
+.portfolio-root .section-heading em {
+  font-family: var(--font-playfair), "Playfair Display", serif;
+  font-style: italic;
+  color: var(--red);
+  font-size: 0.6em;
+  display: block;
+  line-height: 1.4;
+}
+
+.portfolio-root .about-image-block {
+  margin-top: 40px;
+  width: 240px;
+  height: 300px;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #555;
+  text-transform: uppercase;
+  border: 1px solid #222;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-root .about-image-block::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  height: 60%;
+  background: var(--red);
+}
+
+.portfolio-root .about-right {
+  padding-top: 20px;
+}
+
+.portfolio-root .about-intro {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--black);
+  margin-bottom: 40px;
+  border-left: 3px solid var(--red);
+  padding-left: 28px;
+}
+
+.portfolio-root .about-intro strong {
+  font-weight: 700;
+}
+
+.portfolio-root .about-body {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #3a3530;
+  margin-bottom: 50px;
+}
+
+.portfolio-root .about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  border: 1px solid #ddd;
+}
+
+.portfolio-root .stat-box {
+  padding: 28px 24px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.portfolio-root .stat-num {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--black);
+}
+
+.portfolio-root .stat-num span {
+  color: var(--red);
+}
+
+.portfolio-root .stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 6px;
+}
+
+.portfolio-root #services {
+  background: var(--black);
+  padding: 120px 60px;
+}
+
+.portfolio-root .services-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 70px;
+}
+
+.portfolio-root .services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.portfolio-root .service-card {
+  background: #111;
+  padding: 48px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+  cursor: default;
+}
+
+.portfolio-root .service-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-root .service-card:hover {
+  background: #161616;
+}
+
+.portfolio-root .service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.portfolio-root .service-num {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: var(--red);
+  margin-bottom: 28px;
+  opacity: 0.7;
+}
+
+.portfolio-root .service-icon {
+  font-size: 2rem;
+  margin-bottom: 18px;
+}
+
+.portfolio-root .service-title {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.portfolio-root .service-desc {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--gray);
+}
+
+.portfolio-root #portfolio {
+  background: var(--cream);
+  color: var(--black);
+  padding: 120px 60px;
+}
+
+.portfolio-root #portfolio .section-heading {
+  color: var(--black);
+}
+
+.portfolio-root .portfolio-tabs {
+  display: flex;
+  gap: 2px;
+  margin: 50px 0 40px;
+  flex-wrap: wrap;
+}
+
+.portfolio-root .tab-btn {
+  padding: 10px 24px;
+  background: #ddd6ce;
+  border: none;
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.portfolio-root .tab-btn.active,
+.portfolio-root .tab-btn:hover {
+  background: var(--red);
+  color: var(--white);
+}
+
+.portfolio-root .portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.portfolio-root .portfolio-item {
+  aspect-ratio: 4/5;
+  background: #222;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-root .portfolio-item.wide {
+  grid-column: span 2;
+  aspect-ratio: 8/5;
+}
+
+.portfolio-root .portfolio-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  color: #444;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.3s;
+  padding: 24px;
+  text-align: center;
+}
+
+.portfolio-root .portfolio-placeholder:hover {
+  background: linear-gradient(135deg, #1e0008 0%, #0f0f0f 100%);
+}
+
+.portfolio-root .portfolio-placeholder .pi {
+  font-size: 2rem;
+  color: var(--red);
+  opacity: 0.6;
+}
+
+.portfolio-root .portfolio-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  color: var(--white);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.portfolio-root #drive {
+  background: var(--black);
+  padding: 100px 60px;
+}
+
+.portfolio-root .drive-inner {
+  border: 1px solid rgba(232, 0, 61, 0.3);
+  padding: 70px 60px;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.portfolio-root .drive-inner::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 60px;
+  width: 120px;
+  height: 3px;
+  background: var(--red);
+}
+
+.portfolio-root .drive-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.portfolio-root .drive-icon {
+  font-size: 2rem;
+}
+
+.portfolio-root .drive-title {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 2.8rem;
+  letter-spacing: 0.05em;
+  color: var(--white);
+}
+
+.portfolio-root .drive-subtitle {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 50px;
+  line-height: 1.7;
+}
+
+.portfolio-root .drive-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.portfolio-root .drive-link-card {
+  background: #0f0f0f;
+  border: 1px solid #1e1e1e;
+  padding: 28px 24px;
+  text-decoration: none;
+  display: block;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-root .drive-link-card::after {
+  content: "↗";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1rem;
+  color: var(--red);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: all 0.25s;
+}
+
+.portfolio-root .drive-link-card:hover {
+  border-color: rgba(232, 0, 61, 0.4);
+  background: #130007;
+}
+
+.portfolio-root .drive-link-card:hover::after {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.portfolio-root .drive-link-icon {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+}
+
+.portfolio-root .drive-link-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.portfolio-root .drive-link-url {
+  font-size: 0.72rem;
+  color: var(--gray);
+  font-family: monospace;
+  letter-spacing: 0.05em;
+  word-break: break-all;
+}
+
+.portfolio-root .drive-link-url em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.portfolio-root .drive-note {
+  margin-top: 30px;
+  font-size: 0.75rem;
+  color: #444;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.portfolio-root .drive-note::before {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: #333;
+}
+
+.portfolio-root #brands {
+  background: var(--white);
+  color: var(--black);
+  padding: 100px 60px;
+}
+
+.portfolio-root #brands .section-heading {
+  color: var(--black);
+  margin-bottom: 60px;
+}
+
+.portfolio-root .brands-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  margin-top: 50px;
+}
+
+.portfolio-root .brand-box {
+  aspect-ratio: 1;
+  background: #f0ebe4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #888;
+  border: 1px solid #e5dfda;
+  transition: all 0.2s;
+  padding: 20px;
+  text-align: center;
+}
+
+.portfolio-root .brand-box:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.portfolio-root .brand-box .brand-icon {
+  font-size: 1.5rem;
+}
+
+.portfolio-root .brand-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+
+.portfolio-root .brand-box:hover .brand-name {
+  color: var(--white);
+}
+
+.portfolio-root #tools {
+  background: var(--black);
+  padding: 100px 60px;
+}
+
+.portfolio-root .tools-row {
+  display: flex;
+  gap: 80px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.portfolio-root .tool-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.portfolio-root .tool-group-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.portfolio-root .tool-group-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.portfolio-root .tool-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.portfolio-root .tool-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #0f0f0f;
+  font-size: 0.88rem;
+  color: var(--light-gray);
+  letter-spacing: 0.04em;
+  border-left: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.portfolio-root .tool-item:hover {
+  background: #141414;
+  border-left-color: var(--red);
+  color: var(--white);
+}
+
+.portfolio-root .tool-item .ti {
+  font-size: 1.1rem;
+}
+
+.portfolio-root #contact {
+  background: var(--red);
+  padding: 120px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-root #contact::before {
+  content: "DELA";
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 30vw;
+  color: rgba(0, 0, 0, 0.08);
+  position: absolute;
+  bottom: -5vw;
+  right: -2vw;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.portfolio-root .contact-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.portfolio-root .contact-left .section-label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.portfolio-root .contact-heading {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: clamp(4rem, 6vw, 7rem);
+  line-height: 0.9;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+
+.portfolio-root .contact-sub {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.65;
+}
+
+.portfolio-root .contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.portfolio-root .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 28px;
+  background: rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.portfolio-root .contact-item:hover {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.portfolio-root .contact-item-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.portfolio-root .contact-item-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 3px;
+}
+
+.portfolio-root .contact-item-value {
+  font-size: 0.95rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+.portfolio-root footer {
+  background: var(--black);
+  padding: 30px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #1a1a1a;
+}
+
+.portfolio-root .footer-logo {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  color: var(--white);
+}
+
+.portfolio-root .footer-logo span {
+  color: var(--red);
+}
+
+.portfolio-root .footer-copy {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: #444;
+}
+
+.portfolio-root .services-heading-white {
+  color: var(--white);
+}
+
+.portfolio-root .services-heading-you {
+  font-family: var(--font-playfair), "Playfair Display", serif;
+  font-style: italic;
+  color: var(--red);
+  font-size: 0.55em;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-root .portfolio-section-label {
+  color: var(--red);
+}
+
+.portfolio-root .drive-heading-center {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.portfolio-root .drive-heading-white {
+  color: var(--white);
+}
+
+.portfolio-root .tools-heading-white {
+  color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .portfolio-root #cover {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-root .cover-left {
+    padding: 120px 32px 60px;
+    min-height: auto;
+  }
+
+  .portfolio-root .cover-photo-wrap,
+  .portfolio-root .cover-photo-placeholder {
+    min-height: 70vh;
+  }
+
+  .portfolio-root nav {
+    padding: 18px 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .portfolio-root .nav-links {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .portfolio-root #about,
+  .portfolio-root .contact-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-root .about-left {
+    position: static;
+  }
+
+  .portfolio-root .services-grid,
+  .portfolio-root .portfolio-grid,
+  .portfolio-root .drive-links-grid,
+  .portfolio-root .brands-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-root .portfolio-item.wide {
+    grid-column: span 1;
+    aspect-ratio: 4/5;
+  }
+
+  .portfolio-root #about,
+  .portfolio-root #services,
+  .portfolio-root #portfolio,
+  .portfolio-root #drive,
+  .portfolio-root #brands,
+  .portfolio-root #tools,
+  .portfolio-root #contact {
+    padding: 80px 24px;
+  }
+
+  .portfolio-root .cover-scroll {
+    left: 24px;
+  }
+
+  .portfolio-root footer {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 24px;
+  }
+}
