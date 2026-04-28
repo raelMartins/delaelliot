@@ -4,9 +4,61 @@ import Image from "next/image";
 import { useState } from "react";
 import { CoverWebGL } from "./CoverWebGL";
 import { CustomCursor } from "./CustomCursor";
+import { DrivePreviewModal } from "./DrivePreviewModal";
+import { PortfolioDriveBento } from "./PortfolioDriveBento";
 import { Reveal } from "./Reveal";
 import { Center } from "@chakra-ui/react";
+import { DRIVE_PORTFOLIO_CLIPS } from "@/lib/drivePortfolio";
+import type { DriveClip } from "@/lib/drivePortfolio";
 
+const BENTO_DRIVE_TILES: {
+  layoutClass: string;
+  clip: DriveClip;
+  label: string;
+}[] = [
+  {
+    layoutClass: "bento-feature",
+    clip: DRIVE_PORTFOLIO_CLIPS[0],
+    label: "Bridal · Video",
+  },
+  {
+    layoutClass: "bento-tile-a",
+    clip: DRIVE_PORTFOLIO_CLIPS[1],
+    label: "Bridal · Video",
+  },
+  {
+    layoutClass: "bento-tile-b",
+    clip: DRIVE_PORTFOLIO_CLIPS[2],
+    label: "Bridal · Video",
+  },
+  {
+    layoutClass: "bento-banner",
+    clip: DRIVE_PORTFOLIO_CLIPS[10],
+    label: "Wedding · Video",
+  },
+  {
+    layoutClass: "bento-span-left",
+    clip: DRIVE_PORTFOLIO_CLIPS[14],
+    label: "Wedding · Video",
+  },
+  {
+    layoutClass: "bento-span-mid",
+    clip: DRIVE_PORTFOLIO_CLIPS[11],
+    label: "Wedding · Video",
+  },
+  {
+    layoutClass: "bento-tile-c",
+    clip: DRIVE_PORTFOLIO_CLIPS[12],
+    label: "Wedding · Video",
+  },
+  {
+    layoutClass: "bento-tile-d",
+    clip: DRIVE_PORTFOLIO_CLIPS[15],
+    label: "Events · Video",
+  },
+];
+
+/* Temporarily hidden — portfolio category tabs
 const TAB_LABELS = [
   "All Work",
   "Brand Content",
@@ -14,6 +66,7 @@ const TAB_LABELS = [
   "Short-form Video",
   "Product Shoots",
 ] as const;
+*/
 
 const BRAND_CLIENTS = [
   {
@@ -44,7 +97,15 @@ const BRAND_CLIENTS = [
 ] as const;
 
 export function PortfolioPage() {
-  const [activeTab, setActiveTab] = useState(0);
+  // const [activeTab, setActiveTab] = useState(0); // with portfolio-tabs (TAB_LABELS)
+  const [drivePreview, setDrivePreview] = useState<{
+    id: string;
+    title: string;
+  } | null>(null);
+
+  const openDrivePreview = (clip: DriveClip) => {
+    setDrivePreview({ id: clip.id, title: clip.title });
+  };
 
   return (
     <div className="portfolio-root">
@@ -103,9 +164,16 @@ export function PortfolioPage() {
           <div className="red-bar" />
           <div className="cover-photo-wrap">
             <CoverWebGL />
-            <div className="cover-photo-placeholder">
-              <div className="photo-icon">📷</div>
-              Portrait Photo
+            <div className="cover-portrait">
+              <Image
+                src="/images/adela_headshot.jpeg"
+                alt="Mercy Elliot (Dela) — portrait"
+                fill
+                sizes="50vw"
+                priority
+                quality={90}
+                style={{ objectFit: "cover", objectPosition: "center top" }}
+              />
             </div>
           </div>
         </div>
@@ -282,6 +350,7 @@ export function PortfolioPage() {
             Work
           </div>
         </Reveal>
+        {/* Temporarily hidden — tabular filter under Selected Work
         <Reveal className="portfolio-tabs">
           {TAB_LABELS.map((label, i) => (
             <button
@@ -294,64 +363,18 @@ export function PortfolioPage() {
             </button>
           ))}
         </Reveal>
-        <Reveal className="portfolio-bento">
-          <div className="portfolio-item bento-feature">
-            <div className="portfolio-placeholder">
-              <div className="pi">🎬</div>
-              Brand Promo Video — Dela The Creator
-            </div>
-            <div className="portfolio-label">Brand Content · Video</div>
-          </div>
-          <div className="portfolio-item bento-tile-a">
-            <div className="portfolio-placeholder">
-              <div className="pi">📸</div>
-              Product Shoot — Fashion Brand
-            </div>
-            <div className="portfolio-label">Product · Photo</div>
-          </div>
-          <div className="portfolio-item bento-tile-b">
-            <div className="portfolio-placeholder">
-              <div className="pi">💍</div>
-              Proposal Coverage
-            </div>
-            <div className="portfolio-label">Event · Video</div>
-          </div>
-          <div className="portfolio-item bento-banner">
-            <div className="portfolio-placeholder">
-              <div className="pi">⚡</div>
-              TikTok Reel Series
-            </div>
-            <div className="portfolio-label">Short-form · Reel</div>
-          </div>
-          <div className="portfolio-item bento-span-left">
-            <div className="portfolio-placeholder">
-              <div className="pi">🎊</div>
-              Live Event Coverage — Corporate
-            </div>
-            <div className="portfolio-label">Event Coverage · Video</div>
-          </div>
-          <div className="portfolio-item bento-span-mid">
-            <div className="portfolio-placeholder">
-              <div className="pi">📱</div>
-              Instagram Campaign
-            </div>
-            <div className="portfolio-label">Social · Content</div>
-          </div>
-          <div className="portfolio-item bento-tile-c">
-            <div className="portfolio-placeholder">
-              <div className="pi">💒</div>
-              Wedding Film
-            </div>
-            <div className="portfolio-label">Events · Video</div>
-          </div>
-          <div className="portfolio-item bento-tile-d">
-            <div className="portfolio-placeholder">
-              <div className="pi">🛍️</div>
-              Product Demo — BrandX
-            </div>
-            <div className="portfolio-label">Product · Video</div>
-          </div>
+        */}
+        <Reveal>
+          <PortfolioDriveBento
+            tiles={BENTO_DRIVE_TILES}
+            onSelect={openDrivePreview}
+          />
         </Reveal>
+        <DrivePreviewModal
+          fileId={drivePreview?.id ?? null}
+          title={drivePreview?.title}
+          onClose={() => setDrivePreview(null)}
+        />
       </section>
 
       <section id="drive">
@@ -375,41 +398,48 @@ export function PortfolioPage() {
           </p>
           <div className="drive-links-grid">
             <a
-              href="#"
+              href="https://drive.google.com/drive/folders/1QCCXhYOoMJjDzc8rQxyLmedZIFtaMbeu"
               className="drive-link-card"
-              title="Replace # with your Google Drive link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Open Trad (couple) folder in Google Drive"
+            >
+              <div className="drive-link-icon">💍</div>
+              <div className="drive-link-title">Trad (couple)</div>
+              <div className="drive-link-url">
+                <em>drive.google.com</em>/folders/1QCCXhYOoMJjDzc8rQxyLmedZIFtaMbeu
+              </div>
+            </a>
+            <a
+              href="https://drive.google.com/drive/folders/12pxJDjeOZ02uEyzf39S_LSS1nVcY9mBC"
+              className="drive-link-card"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Open Dela the creator folder in Google Drive"
             >
               <div className="drive-link-icon">🎥</div>
-              <div className="drive-link-title">Video Projects</div>
+              <div className="drive-link-title">Dela The Creator</div>
               <div className="drive-link-url">
-                <em>drive.google.com</em>/video-projects
+                <em>drive.google.com</em>/folders/12pxJDjeOZ02uEyzf39S_LSS1nVcY9mBC
               </div>
             </a>
             <a
-              href="#"
+              href="https://drive.google.com/drive/folders/1roqoUT80PKforTW7Lt5CeK71dRx5Rr0x"
               className="drive-link-card"
-              title="Replace # with your Google Drive link"
-            >
-              <div className="drive-link-icon">🤝</div>
-              <div className="drive-link-title">Client Work</div>
-              <div className="drive-link-url">
-                <em>drive.google.com</em>/client-work
-              </div>
-            </a>
-            <a
-              href="#"
-              className="drive-link-card"
-              title="Replace # with your Google Drive link"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Open NiLa2025 folder in Google Drive"
             >
               <div className="drive-link-icon">🎊</div>
-              <div className="drive-link-title">Event Coverage</div>
+              <div className="drive-link-title">NiLa 2025</div>
               <div className="drive-link-url">
-                <em>drive.google.com</em>/event-coverage
+                <em>drive.google.com</em>/folders/1roqoUT80PKforTW7Lt5CeK71dRx5Rr0x
               </div>
             </a>
           </div>
           <div className="drive-note">
-            Replace the # hrefs above with your actual Google Drive share links
+            Folders open in Google Drive — use a signed-in browser if a folder
+            asks for access.
           </div>
         </Reveal>
       </section>

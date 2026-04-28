@@ -231,6 +231,13 @@
   pointer-events: none;
 }
 
+.portfolio-root .cover-portrait {
+  position: absolute;
+  inset: 0;
+  min-height: 100vh;
+  z-index: 1;
+}
+
 .portfolio-root .cover-photo-placeholder {
   width: 100%;
   height: 100%;
@@ -548,22 +555,22 @@
 .portfolio-root .portfolio-bento {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: minmax(140px, min(17vw, 200px));
-  gap: 12px;
+  grid-auto-rows: minmax(190px, min(24vw, 300px));
+  gap: 14px;
   margin-top: 8px;
 }
 
 .portfolio-root .portfolio-bento .portfolio-item {
-  aspect-ratio: unset;
-  background: #222;
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #141414;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   transition:
     transform 0.28s ease,
     box-shadow 0.28s ease;
+  min-height: 0;
 }
 
 .portfolio-root .portfolio-bento .portfolio-item:hover {
@@ -612,14 +619,176 @@
   grid-row: 3;
 }
 
-.portfolio-root .bento-feature .portfolio-placeholder {
-  font-size: 0.68rem;
-  letter-spacing: 0.22em;
+.portfolio-root .portfolio-drive-bento-btn {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: #0a0a0a;
+  cursor: pointer;
+  display: block;
 }
 
-.portfolio-root .bento-feature .portfolio-placeholder .pi {
-  font-size: 2.75rem;
-  opacity: 0.75;
+.portfolio-root .portfolio-drive-bento-btn:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: -4px;
+}
+
+.portfolio-root .portfolio-drive-bento-thumb-area {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+.portfolio-root .portfolio-drive-grid-thumb {
+  object-fit: cover;
+}
+
+.portfolio-root .portfolio-drive-grid-fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #242424 0%, #0f0f0f 100%);
+}
+
+.portfolio-root .portfolio-drive-grid-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.portfolio-root .portfolio-bento .portfolio-item:not(.bento-feature) .portfolio-drive-grid-play {
+  width: 42px;
+  height: 42px;
+  font-size: 0.95rem;
+}
+
+.portfolio-root .bento-feature .portfolio-drive-grid-play {
+  width: 58px;
+  height: 58px;
+  font-size: 1.2rem;
+}
+
+.portfolio-root .portfolio-drive-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.portfolio-root .portfolio-drive-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  border: none;
+  cursor: pointer;
+}
+
+.portfolio-root .portfolio-drive-lightbox-panel {
+  position: relative;
+  z-index: 1;
+  width: min(960px, 100%);
+  max-height: min(90vh, 900px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 14px 14px 16px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+}
+
+.portfolio-root .portfolio-drive-lightbox-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.portfolio-root .portfolio-drive-lightbox-title {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  color: #ddd;
+  letter-spacing: 0.04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portfolio-root .portfolio-drive-lightbox-close {
+  flex-shrink: 0;
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  background: var(--red);
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.portfolio-root .portfolio-drive-lightbox-close:hover {
+  filter: brightness(1.05);
+}
+
+.portfolio-root .portfolio-drive-lightbox-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.portfolio-root .portfolio-drive-lightbox-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.portfolio-root .portfolio-drive-lightbox-external {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+  font-size: 0.72rem;
+  color: var(--red);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.portfolio-root .portfolio-drive-lightbox-external:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-root .portfolio-bento .portfolio-item {
+    transition: none;
+  }
+
+  .portfolio-root .portfolio-bento .portfolio-item:hover {
+    transform: none;
+  }
 }
 
 .portfolio-root .portfolio-placeholder {
@@ -663,14 +832,36 @@
   text-transform: uppercase;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .portfolio-root .portfolio-bento .portfolio-item {
-    transition: none;
-  }
+.portfolio-root .portfolio-label.portfolio-drive-bento-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  padding: 18px 18px 16px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: inherit;
+}
 
-  .portfolio-root .portfolio-bento .portfolio-item:hover {
-    transform: none;
-  }
+.portfolio-root .portfolio-drive-bento-eyebrow {
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.95;
+  color: var(--red);
+}
+
+.portfolio-root .portfolio-drive-bento-name {
+  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  line-height: 1.35;
+  color: var(--white);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .portfolio-root #drive {
@@ -1120,11 +1311,13 @@
   .portfolio-root .portfolio-bento {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
   .portfolio-root .portfolio-bento .portfolio-item {
-    min-height: 220px;
+    grid-column: auto;
+    grid-row: auto;
+    min-height: 240px;
     width: 100%;
   }
 
