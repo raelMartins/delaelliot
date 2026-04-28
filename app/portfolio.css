@@ -545,22 +545,81 @@
   color: var(--black);
 }
 
-.portfolio-root .portfolio-grid {
+.portfolio-root .portfolio-bento {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(140px, min(17vw, 200px));
+  gap: 12px;
+  margin-top: 8px;
 }
 
-.portfolio-root .portfolio-item {
-  aspect-ratio: 4/5;
+.portfolio-root .portfolio-bento .portfolio-item {
+  aspect-ratio: unset;
   background: #222;
   position: relative;
   overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
-.portfolio-root .portfolio-item.wide {
-  grid-column: span 2;
-  aspect-ratio: 8/5;
+.portfolio-root .portfolio-bento .portfolio-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.22);
+  z-index: 1;
+}
+
+.portfolio-root .bento-feature {
+  grid-column: 1 / 8;
+  grid-row: 1 / 3;
+}
+
+.portfolio-root .bento-tile-a {
+  grid-column: 8 / 10;
+  grid-row: 1;
+}
+
+.portfolio-root .bento-tile-b {
+  grid-column: 10 / 13;
+  grid-row: 1;
+}
+
+.portfolio-root .bento-banner {
+  grid-column: 8 / 13;
+  grid-row: 2;
+}
+
+.portfolio-root .bento-span-left {
+  grid-column: 1 / 5;
+  grid-row: 3;
+}
+
+.portfolio-root .bento-span-mid {
+  grid-column: 5 / 9;
+  grid-row: 3;
+}
+
+.portfolio-root .bento-tile-c {
+  grid-column: 9 / 11;
+  grid-row: 3;
+}
+
+.portfolio-root .bento-tile-d {
+  grid-column: 11 / 13;
+  grid-row: 3;
+}
+
+.portfolio-root .bento-feature .portfolio-placeholder {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+}
+
+.portfolio-root .bento-feature .portfolio-placeholder .pi {
+  font-size: 2.75rem;
+  opacity: 0.75;
 }
 
 .portfolio-root .portfolio-placeholder {
@@ -602,6 +661,16 @@
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-root .portfolio-bento .portfolio-item {
+    transition: none;
+  }
+
+  .portfolio-root .portfolio-bento .portfolio-item:hover {
+    transform: none;
+  }
 }
 
 .portfolio-root #drive {
@@ -1043,15 +1112,25 @@
   }
 
   .portfolio-root .services-grid,
-  .portfolio-root .portfolio-grid,
   .portfolio-root .drive-links-grid,
   .portfolio-root .brands-grid {
     grid-template-columns: 1fr;
   }
 
-  .portfolio-root .portfolio-item.wide {
-    grid-column: span 1;
-    aspect-ratio: 4/5;
+  .portfolio-root .portfolio-bento {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .portfolio-root .portfolio-bento .portfolio-item {
+    min-height: 220px;
+    width: 100%;
+  }
+
+  .portfolio-root .portfolio-bento .portfolio-item:hover {
+    transform: none;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   }
 
   .portfolio-root #about,

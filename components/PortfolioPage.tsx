@@ -294,57 +294,57 @@ export function PortfolioPage() {
             </button>
           ))}
         </Reveal>
-        <Reveal className="portfolio-grid">
-          <div className="portfolio-item wide">
+        <Reveal className="portfolio-bento">
+          <div className="portfolio-item bento-feature">
             <div className="portfolio-placeholder">
               <div className="pi">🎬</div>
               Brand Promo Video — Dela The Creator
             </div>
             <div className="portfolio-label">Brand Content · Video</div>
           </div>
-          <div className="portfolio-item">
+          <div className="portfolio-item bento-tile-a">
             <div className="portfolio-placeholder">
               <div className="pi">📸</div>
               Product Shoot — Fashion Brand
             </div>
             <div className="portfolio-label">Product · Photo</div>
           </div>
-          <div className="portfolio-item">
+          <div className="portfolio-item bento-tile-b">
             <div className="portfolio-placeholder">
               <div className="pi">💍</div>
               Proposal Coverage
             </div>
             <div className="portfolio-label">Event · Video</div>
           </div>
-          <div className="portfolio-item">
+          <div className="portfolio-item bento-banner">
             <div className="portfolio-placeholder">
               <div className="pi">⚡</div>
               TikTok Reel Series
             </div>
             <div className="portfolio-label">Short-form · Reel</div>
           </div>
-          <div className="portfolio-item wide">
+          <div className="portfolio-item bento-span-left">
             <div className="portfolio-placeholder">
               <div className="pi">🎊</div>
               Live Event Coverage — Corporate
             </div>
             <div className="portfolio-label">Event Coverage · Video</div>
           </div>
-          <div className="portfolio-item">
+          <div className="portfolio-item bento-span-mid">
             <div className="portfolio-placeholder">
               <div className="pi">📱</div>
               Instagram Campaign
             </div>
             <div className="portfolio-label">Social · Content</div>
           </div>
-          <div className="portfolio-item">
+          <div className="portfolio-item bento-tile-c">
             <div className="portfolio-placeholder">
               <div className="pi">💒</div>
               Wedding Film
             </div>
             <div className="portfolio-label">Events · Video</div>
           </div>
-          <div className="portfolio-item">
+          <div className="portfolio-item bento-tile-d">
             <div className="portfolio-placeholder">
               <div className="pi">🛍️</div>
               Product Demo — BrandX
