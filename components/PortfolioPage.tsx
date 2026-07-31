@@ -151,6 +151,9 @@ export function PortfolioPage() {
           <li>
             <a href="#contact">Contact</a>
           </li>
+          <li>
+            <a href="/resume">Resume</a>
+          </li>
         </ul>
       </nav>
 

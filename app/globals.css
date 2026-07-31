@@ -19,13 +19,18 @@ html {
 }
 
 @media print {
+  .print-hidden,
   nav,
+  footer,
   .cursor,
-  .cursor-ring {
+  .cursor-ring,
+  .resume-toolbar,
+  .resume-actions,
+  .resume-hint {
     display: none !important;
   }
 
-  section {
+  .portfolio-root section {
     break-inside: avoid;
   }
 
