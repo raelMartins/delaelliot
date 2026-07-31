@@ -46,10 +46,11 @@ const jobs = [
   },
   {
     company: "BrainyKid Foundation (NGO) - Lagos, Nigeria",
-    role: "Operations & Media Assistant",
+    role: "Personal Assistant",
     dates: "Aug 2022 - Mar 2024",
     bullets: [
-      "Managed public communications, customer service, and scheduling while producing digital content to support foundation campaigns and events.",
+      "Provided personal assistant support including calendar management, scheduling, correspondence, and day-to-day coordination for foundation leadership.",
+      "Handled inquiries and visitor communications while assisting with event prep and light digital content for foundation campaigns.",
     ],
   },
 ] as const;
