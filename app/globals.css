@@ -26,6 +26,7 @@ html {
   .cursor-ring,
   .resume-toolbar,
   .resume-actions,
+  .resume-download-btn,
   .resume-hint {
     display: none !important;
   }
@@ -36,6 +37,12 @@ html {
 
   body {
     cursor: auto !important;
+  }
+
+  body:has(.resume-root),
+  body:has(.resume-root) * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
 

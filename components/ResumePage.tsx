@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { ResumePrintButton } from "./ResumePrintButton";
 
@@ -54,11 +55,26 @@ const jobs = [
 ] as const;
 
 const certifications = [
-  "Degree in Mass Communication - University of Lagos, 2025",
+  "Bachelor of Science (B.Sc.) in Mass Communication (In Progress) - University of Lagos (UNILAG), 2025 - Present",
   "Women In Film Intensive Hands-on Training - 2024",
   "Social Media Marketing Certification - Emarketing Institute, 2022",
   "Senior Secondary School Certificate (SSCE) - Jotlad College, 2019",
 ] as const;
+
+/** Bold recruiter-skim figures like ₦150 Million without changing ATS text. */
+function withImpactEmphasis(text: string): ReactNode {
+  const parts = text.split(/(₦150 Million)/g);
+  if (parts.length === 1) return text;
+  return parts.map((part, index) =>
+    part === "₦150 Million" ? (
+      <strong key={index} className="resume-impact">
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
+  );
+}
 
 export function ResumePage() {
   return (
@@ -84,30 +100,29 @@ export function ResumePage() {
       <article className="resume-sheet" aria-label="Resume - Mercy Elliot">
         <header className="resume-header">
           <h1 className="resume-name">Mercy Elliot</h1>
-          <p className="resume-contact">
-            Lagos, Nigeria
-            <span className="resume-contact-sep" aria-hidden="true">
-              |
+          <ul className="resume-contact">
+            <li>Lagos, Nigeria</li>
+            <li>
+              <a href="tel:+2347045401072">+234 704 540 1072</a>
+            </li>
+            <li>
+              <a href="mailto:mercyelliot28@gmail.com">
+                mercyelliot28@gmail.com
+              </a>
+            </li>
+          </ul>
+          <a
+            className="resume-portfolio-link"
+            href="https://delaelliot.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="resume-portfolio-label">View Portfolio</span>
+            <span className="resume-portfolio-url">delaelliot.vercel.app</span>
+            <span className="resume-portfolio-arrow" aria-hidden="true">
+              ↗
             </span>
-            <a href="tel:+2347045401072">+234 704 540 1072</a>
-            <span className="resume-contact-sep" aria-hidden="true">
-              |
-            </span>
-            <a href="mailto:mercyelliot28@gmail.com">
-              mercyelliot28@gmail.com
-            </a>
-            <span className="resume-contact-sep" aria-hidden="true">
-              |
-            </span>
-            Portfolio:{" "}
-            <a
-              href="https://delaelliot.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              delaelliot.vercel.app
-            </a>
-          </p>
+          </a>
         </header>
 
         <section className="resume-section" aria-labelledby="summary-heading">
@@ -115,14 +130,9 @@ export function ResumePage() {
             Professional Summary
           </h2>
           <p className="resume-summary">
-            Results-driven Creative Content Strategist and Account Executive
-            with proven expertise in short-form video production, brand
-            storytelling, and high-value client acquisition. Strategic
-            cross-functional operator capable of bridging creative media
-            production with business revenue growth - demonstrated by securing
-            top-tier enterprise accounts valued up to ₦150 Million. Skilled in
-            end-to-end video editing, social media expansion, and client
-            relationship management.
+            {withImpactEmphasis(
+              "Results-driven Creative Content Strategist and Account Executive with proven expertise in short-form video production, brand storytelling, and high-value client acquisition. Strategic cross-functional operator capable of bridging creative media production with business revenue growth - demonstrated by securing top-tier enterprise accounts valued up to ₦150 Million. Skilled in end-to-end video editing, social media expansion, and client relationship management.",
+            )}
           </p>
         </section>
 
@@ -164,7 +174,7 @@ export function ResumePage() {
               </div>
               <ul className="resume-bullets">
                 {job.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
+                  <li key={bullet}>{withImpactEmphasis(bullet)}</li>
                 ))}
               </ul>
             </div>
