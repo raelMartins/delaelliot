@@ -9,8 +9,18 @@ export type DriveClip = {
 /** Google Drive file IDs — share each file as “Anyone with the link” for embeds to load. */
 export const DRIVE_PORTFOLIO_CLIPS: DriveClip[] = [
   {
-    id: "1nlPpZ1AEygUrLH-xLt0EMkBV85mDdxML",
-    title: "Baby Adeleye — Gender Reveal",
+    id: "1Xq69HANqN9QCO_zLHP9y4Udiapji11Q6",
+    title: "Baby O. Gender Reveal",
+    group: "other",
+  },
+  {
+    id: "1Rud_9RV9JpLcYV2F9RwMVcMh50QhfRHK",
+    title: "Wedding Highlights",
+    group: "wedding",
+  },
+  {
+    id: "19wWq6eGAZfkp8IUWxWOV6m3kWDGjghjM",
+    title: "Birthday Thanksgiving",
     group: "other",
   },
 ];

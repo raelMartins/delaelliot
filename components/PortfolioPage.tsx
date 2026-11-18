@@ -27,6 +27,16 @@ const BENTO_DRIVE_TILES: DriveBentoTile[] = [
     clip: DRIVE_PORTFOLIO_CLIPS[0],
     label: "Baby shower · Video",
   },
+  {
+    layoutClass: "bento-reel-mid-a",
+    clip: DRIVE_PORTFOLIO_CLIPS[1],
+    label: "Wedding · Reel",
+  },
+  {
+    layoutClass: "bento-reel-mid-b",
+    clip: DRIVE_PORTFOLIO_CLIPS[2],
+    label: "Event · Reel",
+  },
 ];
 
 const BENTO_LOCAL_VIDEO_TILES: LocalVideoBentoTile[] = [
@@ -35,22 +45,6 @@ const BENTO_LOCAL_VIDEO_TILES: LocalVideoBentoTile[] = [
     videoSrc: videoPublicSrc(WEDDING_REEL_FILENAME),
     label: "Wedding · Reel",
     title: "Saying I Do — Sparkie Lens",
-  },
-  {
-    layoutClass: "bento-reel-mid-a",
-    videoSrc: videoPublicSrc(
-      "realmofgloryipaja_1777397997_3885410243039791301_6916197748.mp4",
-    ),
-    label: "Event · Reel",
-    title: "Realm of Glory Ipaja",
-  },
-  {
-    layoutClass: "bento-reel-mid-b",
-    videoSrc: videoPublicSrc(
-      "brandxsourcing_1775553350_3869943942360116393_73372328276.mp4",
-    ),
-    label: "Brand · Reel",
-    title: "BrandX Sourcing",
   },
   {
     layoutClass: "bento-reel-mid-c",
