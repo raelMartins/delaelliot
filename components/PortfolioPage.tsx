@@ -33,7 +33,7 @@ const BENTO_DRIVE_TILES: DriveBentoTile[] = [
     label: "Wedding · Reel",
   },
   {
-    layoutClass: "bento-reel-mid-b",
+    layoutClass: "bento-reel-mid-c",
     clip: DRIVE_PORTFOLIO_CLIPS[2],
     label: "Event · Reel",
   },
@@ -47,9 +47,9 @@ const BENTO_LOCAL_VIDEO_TILES: LocalVideoBentoTile[] = [
     title: "Saying I Do — Sparkie Lens",
   },
   {
-    layoutClass: "bento-reel-mid-c",
+    layoutClass: "bento-reel-mid-b",
     videoSrc: videoPublicSrc(
-      "brandxsourcing_1769509209_3819239649206644234_73372328276.mp4",
+      "brandxsourcing_1775553350_3869943942360116393_73372328276.mp4",
     ),
     label: "Brand · Reel",
     title: "BrandX Sourcing",
